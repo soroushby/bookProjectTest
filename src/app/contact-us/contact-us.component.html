@@ -1,0 +1,61 @@
+<div class="container" [formGroup]="form">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Contact us form</mat-card-title>
+      <mat-card-subtitle>Complete this form to borrow book</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-form-field appearance="fill" class="form-input">
+      <mat-label>Full Name</mat-label>
+      <input matInput formControlName="fullName" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-input">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-input">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-input">
+      <mat-label>Book Types</mat-label>
+      <mat-select formControlName="bookType">
+        <mat-option *ngFor="let bookType of bookTypes" [value]="bookType.value">
+          {{ bookType.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-radio-group
+      aria-label="Select an option"
+      formControlName="price"
+      class="form-input"
+    >
+      <mat-radio-button value="free">Free</mat-radio-button>
+      <mat-radio-button value="premium">Premium</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-checkbox class="form-input" formControlName="terms"
+      >Agree to term and conditions!</mat-checkbox
+    >
+    <!-- <mat-form-field appearance="fill">
+    <mat-label>Select</mat-label>
+    <mat-select>
+      <mat-option value="one">First option</mat-option>
+      <mat-option value="two">Second option</mat-option>
+    </mat-select>
+  </mat-form-field> -->
+  </mat-card>
+</div>
+
+{{ form.value | json }}

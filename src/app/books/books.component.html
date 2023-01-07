@@ -1,0 +1,8 @@
+<div class="container cards">
+  <app-loading class="loading"></app-loading>
+  <ng-container *ngIf="books$ | async as books">
+    <ng-container *ngFor="let book of books">
+      <app-book [book]="book"></app-book>
+    </ng-container>
+  </ng-container>
+</div>
