@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BookService } from '../services/book.service';
 import { Observable, finalize } from 'rxjs';
 import { Book } from '../interfaces/books';
@@ -8,6 +8,7 @@ import { LoadingService } from '../services/loading.service';
   selector: 'app-books',
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BooksComponent implements OnInit {
   // books$: Observable<Book[]> | undefined = this.bookService.allBooks();
